@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реестр иноагентов</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
+        
+        :root {
+            --main-bg: #111;
+            --card-bg: #1a1a1a;
+            --accent-red: #d10000;
+            --accent-yellow: #ffcc00;
+            --text-light: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--main-bg);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-light);
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-red);
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 10px;
+        }
+        
+        .header::after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--accent-red), transparent);
+            margin: 15px auto;
+        }
+        
+        .registry {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .agent-card {
+            background-color: var(--card-bg);
+            border: 3px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(209, 0, 0, 0.2);
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .agent-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .agent-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 2px solid var(--accent-red);
+            margin-bottom: 15px;
+            background-color: #333;
+            display: block;
+        }
+        
+        .agent-name {
+            font-size: 24px;
+            color: var(--accent-red);
+            margin: 0 0 10px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .agent-info {
+            margin-bottom: 15px;
+        }
+        
+        .agent-info p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+        
+        .agent-info strong {
+            color: var(--accent-yellow);
+        }
+        
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 18px;
+            transform: rotate(15deg);
+            border: 2px dashed var(--accent-red);
+            padding: 5px 10px;
+            opacity: 0.9;
+        }
+        
+        /* Скрепки */
+        .staple {
+            position: absolute;
+            width: 25px;
+            height: 12px;
+            background: linear-gradient(to bottom, #999, #666);
+            border-radius: 2px;
+            transform: rotate(-45deg);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .staple-tl {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .staple-br {
+            bottom: 10px;
+            right: 10px;
+            transform: rotate(135deg);
+        }
+        
+        /* Эффекты */
+        .corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.1;
+        }
+        
+        .corner-tl {
+            top: 0;
+            left: 0;
+            border-top: 3px solid var(--accent-red);
+            border-left: 3px solid var(--accent-red);
+        }
+        
+        .corner-br {
+            bottom: 0;
+            right: 0;
+            border-bottom: 3px solid var(--accent-red);
+            border-right: 3px solid var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Реестр иноагентов</h1>
+        <p>Официальная база данных лиц, осуществляющих деятельность под иностранным влиянием</p>
+    </div>
+    
+    <div class="registry">
+        <!-- Пример карточки агента 1 -->
+        <div class="agent-card">
+            <div class="staple staple-tl"></div>
+            <div class="staple staple-br"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-br"></div>
+            <span class="stamp">СЕКРЕТНО</span>
+            <img class="agent-photo" src="agent1.jpg" alt="Фото агента">
+            <h2 class="agent-name">Никита И.С</h2>
+            <div class="agent-info">
+                <p><strong>Никнейм:</strong> "RET24"</p>
+                <p><strong>Страна-куратор:</strong> США</p>
+                <p><strong>Специализация:</strong> Разжигание Ненависте к Стране</p>
+                <p><strong>Дата включения в реестр:</strong> 12.05.2022</p>
+                <p><strong>Статус:</strong> В розыске</p>
+            </div>
+        </div>
+        
+        <!-- Пример карточки агента 2 -->
+        <div class="agent-card">
+            <div class="staple staple-tl"></div>
+            <div class="staple staple-br"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-br"></div>
+            <span class="stamp">СЕКРЕТНО</span>
+            <img class="agent-photo" src="agent2.jpg" alt="Фото агента">
+            <h2 class="agent-name">Неизвестно</h2>
+            <div class="agent-info">
+                <p><strong>Никнейм:</strong> "ЯНОМЕНО"</p>
+                <p><strong>Страна-куратор:</strong> Великобритания</p>
+                <p><strong>Специализация:</strong> Манипуляция </p>
+                <p><strong>Дата включения в реестр:</strong> 03.11.2021</p>
+                <p><strong>Статус:</strong> Задержан</p>
+            </div>
+        </div>
+        
+        <!-- Пример карточки агента 3 -->
+        <div class="agent-card">
+            <div class="staple staple-tl"></div>
+            <div class="staple staple-br"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-br"></div>
+            <span class="stamp">ОВ</span>
+            <img class="agent-photo" src="agent3.jpg" alt="Фото агента">
+            <h2 class="agent-name">Неизвестно</h2>
+            <div class="agent-info">
+                <p><strong>Никнейм:</strong> "Kivviol"</p>
+                <p><strong>Страна-куратор:</strong> Германия</p>
+                <p><strong>Специализация:</strong> Наркодилер</p>
+                <p><strong>Дата включения в реестр:</strong> 22.07.2023</p>
+                <p><strong>Статус:</strong> В Розыске</p>
+            </div>
+        </div>
+        
+        <!-- Новая карточка агента 4 -->
+        <div class="agent-card">
+            <div class="staple staple-tl"></div>
+            <div class="staple staple-br"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-br"></div>
+            <span class="stamp">СЕКРЕТНО</span>
+            <img class="agent-photo" src="agent4.jpg" alt="Фото агента">
+            <h2 class="agent-name">Виктор С.А</h2>
+            <div class="agent-info">
+                <p><strong>Никнейм:</strong> "Lalik"</p>
+                <p><strong>Страна-куратор:</strong> Канада</p>
+                <p><strong>Специализация:</strong> Шпион</p>
+                <p><strong>Дата включения в реестр:</strong> 15.09.2023</p>
+                <p><strong>Статус:</strong> Задержан</p>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
